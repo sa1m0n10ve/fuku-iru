@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 部屋IDを知っている人だけが読み書きできる（部屋の一覧は誰にも見えない）
+    match /rooms/{room}/items/{item} {
+      allow read, delete: if room.size() >= 16;
+
+      allow create: if room.size() >= 16
+        && request.resource.data.image is string
+        && request.resource.data.image.size() < 1000000
+        && request.resource.data.keys().hasOnly(['image', 'note', 'createdAt', 'verdict', 'comment', 'judgedAt']);
+
+      allow update: if room.size() >= 16
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['note', 'verdict', 'comment', 'judgedAt'])
+        && (request.resource.data.verdict == null
+            || request.resource.data.verdict in ['want', 'no', 'maybe']);
+    }
+  }
+}
