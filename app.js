@@ -224,7 +224,7 @@ function renderSender() {
         h("button", { type: "button", class: "btn primary small-btn", onclick: () => copyText(judgeUrl, linkInput) }, "コピー")),
       h("a", {
         class: "btn small-btn", target: "_blank", rel: "noopener",
-        href: "https://line.me/R/share?text=" + encodeURIComponent("この服いる？いるのを選んでね\n" + judgeUrl),
+        href: "https://line.me/R/share?text=" + encodeURIComponent("これいる？いらない？ほしいのを選んでね\n" + judgeUrl),
       }, "LINEで送る"),
     ),
     upload,
