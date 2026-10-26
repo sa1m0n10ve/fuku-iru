@@ -269,7 +269,7 @@ function renderSender() {
     if (editingId === item.id) {
       const input = h("input", {
         class: "note-input", type: "text", value: item.note || "", maxlength: "80",
-        placeholder: "例: 食器セット 6枚 未使用",
+        placeholder: "メモ（任意）",
       });
       const save = async () => {
         editingId = null;
