@@ -363,7 +363,7 @@ function renderJudge() {
   function judgeCard(item) {
     const box = h("textarea", {
       id: "comment", class: "comment-box", rows: "2", maxlength: "200",
-      placeholder: "ひとこと（任意）例: 小さければほしい",
+      placeholder: "ひとこと（任意）",
       oninput: (e) => { drafts[item.id] = e.target.value; },
     });
     box.value = drafts[item.id] ?? item.comment ?? "";
