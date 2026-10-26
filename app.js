@@ -55,7 +55,7 @@ function openZoom(src) {
 
 function photo(item, cls = "ph") {
   return h("button", { type: "button", class: cls, "aria-label": "写真を拡大", onclick: () => openZoom(item.image) },
-    h("img", { src: item.image, alt: item.note || "洋服の写真", loading: "lazy" }));
+    h("img", { src: item.image, alt: item.note || "写真", loading: "lazy" }));
 }
 
 async function copyText(text, input) {
@@ -269,7 +269,7 @@ function renderSender() {
     if (editingId === item.id) {
       const input = h("input", {
         class: "note-input", type: "text", value: item.note || "", maxlength: "80",
-        placeholder: "例: 去年買ったコート Mサイズ",
+        placeholder: "例: 食器セット 6枚 未使用",
       });
       const save = async () => {
         editingId = null;
@@ -363,7 +363,7 @@ function renderJudge() {
   function judgeCard(item) {
     const box = h("textarea", {
       id: "comment", class: "comment-box", rows: "2", maxlength: "200",
-      placeholder: "ひとこと（任意）例: サイズ合えばほしい",
+      placeholder: "ひとこと（任意）例: 小さければほしい",
       oninput: (e) => { drafts[item.id] = e.target.value; },
     });
     box.value = drafts[item.id] ?? item.comment ?? "";
